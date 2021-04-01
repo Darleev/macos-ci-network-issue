@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  sign:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    env:
+      SECRET_URL: "${{ secrets.SECRET_URL }}"
+    steps:
+      - run: curl "$SECRET_URL" -o test
